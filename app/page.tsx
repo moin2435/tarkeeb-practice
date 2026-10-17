@@ -12,36 +12,44 @@ export default async function Home() {
         <h1 className="text-2xl font-semibold text-zinc-950 dark:text-zinc-50">
           I&apos;rab al-Qur&apos;an Practice
         </h1>
-        {user ? (
-          <div className="flex items-center gap-4 text-sm">
-            <Link
-              href="/progress"
-              className="text-zinc-600 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50"
-            >
-              My Progress
-            </Link>
-            <span className="text-zinc-500 dark:text-zinc-400">
-              {user.email}
-            </span>
-            <form action={signOut}>
+        <div className="flex items-center gap-4 text-sm">
+          <Link
+            href="/learn"
+            className="text-zinc-600 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50"
+          >
+            Learn
+          </Link>
+          {user ? (
+            <>
+              <Link
+                href="/progress"
+                className="text-zinc-600 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50"
+              >
+                My Progress
+              </Link>
+              <span className="text-zinc-500 dark:text-zinc-400">
+                {user.email}
+              </span>
+              <form action={signOut}>
+                <button
+                  type="submit"
+                  className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50"
+                >
+                  Sign Out
+                </button>
+              </form>
+            </>
+          ) : (
+            <form action={signInWithGoogle}>
               <button
                 type="submit"
-                className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50"
+                className="rounded-lg bg-zinc-950 dark:bg-zinc-50 text-white dark:text-black px-4 py-1.5 text-sm font-medium hover:opacity-90"
               >
-                Sign Out
+                Sign in with Google
               </button>
             </form>
-          </div>
-        ) : (
-          <form action={signInWithGoogle}>
-            <button
-              type="submit"
-              className="rounded-lg bg-zinc-950 dark:bg-zinc-50 text-white dark:text-black px-4 py-1.5 text-sm font-medium hover:opacity-90"
-            >
-              Sign in with Google
-            </button>
-          </form>
-        )}
+          )}
+        </div>
       </div>
 
       <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center max-w-2xl">
