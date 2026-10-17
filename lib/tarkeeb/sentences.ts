@@ -428,3 +428,13 @@ export const SENTENCES: Sentence[] = [
       "The exception (‘except those who...’) excepts from ‘man’ in the previous verse — i.e. ‘surely man is in loss, except those who believed...’",
   },
 ];
+
+/** Surah names in order of first appearance in SENTENCES — add a surah's first ayah anywhere above and it appears here automatically. */
+export const SURAHS: string[] = Array.from(new Set(SENTENCES.map((s) => s.surah)));
+
+/** A surah's ayat, sorted ascending by ayahNumber (for sequential surah-mode practice). */
+export function getSurahAyat(surah: string): Sentence[] {
+  return SENTENCES.filter((s) => s.surah === surah).sort(
+    (a, b) => a.ayahNumber - b.ayahNumber
+  );
+}
